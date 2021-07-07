@@ -1,5 +1,15 @@
 
+main {
+    display: flex;
+    text-align: center;
+}
+
 .mb-3 {
     width: 20vw;
+
+}
+
+.jumbotron {
+    width: 40vw;
 
 }
