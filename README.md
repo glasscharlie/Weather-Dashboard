@@ -9,7 +9,7 @@
 https://glasscharlie.github.io/Weather-Dashboard/
 
 ## Images
-![website-one](assets/images/weather-dashboard-two.PNG)
+![website-one](assets/Images/weather-dashboard-two.PNG)
 
 
 ## User Story
