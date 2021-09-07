@@ -8,19 +8,24 @@
     <link rel="stylesheet" href="assets/CSS/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
-    <header>Weather Dashboard</header>
+    <header><h1>Weather Dashboard</h1></header>
 
 </head>
 
 <body>
-
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Search for a city:</label>
-        <input type="input" class="form-control" id="city-input" placeholder="Seattle" value="" required>
-        <button type="submit" id='submit-button'></button>
-    </div>
+  
+  <div id =searchHistoryDiv>
+    <h5 id = "searchHistory">Search History:</h5>
+    <ul id = "searchHistoryList"></ul>
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Search for a city:</label>
+    <input type="input" class="form-control" id="city-input" placeholder="Seattle" value="" required>
+    <button type="submit" id='submit-button'>Submit</button>
+  </div>
 
     <main>
+
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">

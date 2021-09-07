@@ -1,31 +1,48 @@
 var cityName = document.querySelector("#city-input")
 var sumbitElement = document.querySelector("#submit-button")
 var titleElement = document.querySelector(".display-4")
+var searchHistory = document.querySelector("#searchHistory")
 var locationArray = [];
 var weekDay = moment().format("dddd LL");
-var searches;
+var searches = [];
+var searchesHistory = []
 
 
-function localData() {
-    if ("cities" in localStorage) {
-        searches = JSON.parse(localStorage.getItem('cities'))
-        }
+function loadSearchHistory() {
+  if (localStorage.Searches) {
+    searchesHistory = JSON.parse(localStorage.Searches);
+  }
+  searchesHistory.map(el => {
+    var searchLi = document.createElement("li")
+    searchLi.textContent = el
+    searchHistory.append(searchLi)
+  })
 }
+loadSearchHistory()
+
+function getStorageData(city) {
+  if (localStorage.Searches) {
+    searches = JSON.parse(localStorage.Searches);
+  }
+  searches.push(city)
+  localStorage.Searches = JSON.stringify(searches);
+}
+
 
 
 function getLocation(event) {
     var citySearch = cityName.value
     
-    var apiKey = 'a6f4c7c6117b467306e0dda6808a0ae4'
-    var requestUrl = `http://api.positionstack.com/v1/forward?access_key=${apiKey}&query=${citySearch}`;
-    
+    var apiKey = '15a0cfa8b9ac3c7368330806d461355d'
+    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&appid=${apiKey}&units=imperial`
+    getStorageData(cityName.value)
     
     fetch(requestUrl)
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
-        locationArray.push(new Location(data.data[0].latitude,data.data[0].longitude))
+        locationArray.push(new Location(data.coord.lat,data.coord.lon))
         getWeather()
     });
 }
@@ -54,6 +71,21 @@ function getWeather(event) {
         document.querySelector("#today-wind").textContent = `Wind: ${data.daily[0].wind_speed}`
         document.querySelector("#today-humitity").textContent = `Humitity: ${data.daily[0].humidity}`
         document.querySelector("#today-UV").textContent = `UV Index: ${data.daily[0].uvi}`
+        if(data.daily[0].uvi < 2) {
+          document.querySelector("#today-UV").style.backgroundColor = "green"
+        }
+        if (data.daily[0].uvi <= 5 && data.daily[0].uvi > 2) {
+          document.querySelector("#today-UV").style.backgroundColor = "yellow"
+        }
+        if (data.daily[0].uvi <= 7 && data.daily[0].uvi > 5) {
+          document.querySelector("#today-UV").style.backgroundColor = "orange"
+        }
+        if (data.daily[0].uvi <= 10 && data.daily[0].uvi > 7) {
+          document.querySelector("#today-UV").style.backgroundColor = "red"
+        }
+        if (data.daily[0].uvi >= 11) {
+          document.querySelector("#today-UV").style.backgroundColor = "purple"
+        }
 
         document.querySelector("#one-title").textContent = moment.unix(data.daily[1].dt).format('l');
         document.querySelector("#one-temp").textContent = `Temp: ${data.daily[1].temp.day}`;

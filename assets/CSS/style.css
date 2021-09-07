@@ -1,3 +1,7 @@
+h1 {
+    text-align: center;
+}
+
 
 main {
     display: flex;
@@ -13,3 +17,14 @@ main {
     width: 40vw;
 
 }
+
+.card {
+    background-color: lightblue;
+}
+
+/* .mb-3 {
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 5%;
+} */
+
