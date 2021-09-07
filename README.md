@@ -9,7 +9,7 @@
 https://glasscharlie.github.io/Weather-Dashboard/
 
 ## Image
-![Website-one](assets/images/weather-dashboard.PNG)
+![Website-one](/assets/images/weather-dashboard-two.PNG)
 
 
 ## User Story
@@ -27,5 +27,6 @@ It utilizes the Moment.js library, and Bootstrap
 ## Change Log
 7-1-2021 3:30pm - Added base code \
 7-1-2021 6:40pm - Added JS functionality
+9-7-2021 1:00pm - Fixed API call to work on HTTPS
 
 -->
