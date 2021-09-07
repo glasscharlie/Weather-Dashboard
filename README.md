@@ -8,8 +8,8 @@
 ## Deployed Site
 https://glasscharlie.github.io/Weather-Dashboard/
 
-## Image
-![Website-one](assets/images/weather-dashboard-two.PNG)
+## Images
+![website-one](assets/images/weather-dashboard-two.PNG)
 
 
 ## User Story
